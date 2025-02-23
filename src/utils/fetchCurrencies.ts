@@ -15,7 +15,7 @@ export const fetchRates = async (currencies?: string[]): Promise<Rates> => {
       ? `https://softtecointerviewbe-production.up.railway.app:3001/api/currency/rates?currencies=${currencies.join(
           ","
         )}`
-      : `https://softtecointerviewbe-production.up.railway.app:3001/api/currency/rates`;
+      : `https://softtecointerviewbe-production.up.railway.app/api/currency/rates`;
 
     return await fetchData<Rates>({ url });
   } catch (error) {
@@ -28,7 +28,7 @@ export const fetchSupportedCountries = async (): Promise<
 > => {
   try {
     const data = await fetchData<SupportedCurrency[]>({
-      url: `https://softtecointerviewbe-production.up.railway.app:3001/api/currency/codes`,
+      url: `https://softtecointerviewbe-production.up.railway.app/api/currency/codes`,
     });
     return data;
   } catch (error) {
@@ -47,7 +47,7 @@ export const fetchConversions = async (
 ) => {
   try {
     return await fetchData<{ [key: string]: number }>({
-      url: `https://softtecointerviewbe-production.up.railway.app:3001/api/currency/convert`,
+      url: `https://softtecointerviewbe-production.up.railway.app/api/currency/convert`,
       body: {
         currency,
         amount,
