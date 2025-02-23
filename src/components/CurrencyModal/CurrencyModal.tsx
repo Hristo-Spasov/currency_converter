@@ -28,11 +28,11 @@ const CurrencyModal = ({
               x
             </button>
           </div>
-          {isLoading ? (
-            <span className="loader"></span>
-          ) : (
-            <div className="modal_body">
-              {currencies.map((currency) => (
+          <div className="modal_body">
+            {isLoading ? (
+              <span className="loader"></span>
+            ) : (
+              currencies.map((currency) => (
                 <div
                   key={currency.code}
                   className="currency_option"
@@ -41,9 +41,9 @@ const CurrencyModal = ({
                   <span>{currency.code}</span>
                   <span>{currency.name}</span>
                 </div>
-              ))}
-            </div>
-          )}
+              ))
+            )}
+          </div>
         </div>
       </div>
     </>
