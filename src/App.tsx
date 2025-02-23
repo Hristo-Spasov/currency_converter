@@ -86,6 +86,7 @@ const App = () => {
   const handleCurrencySelect = async (currencyCode: string) => {
     try {
       setError(null);
+      setIsLoading(true);
       const newSelectedCurrencies = [...selectedCurrencies, currencyCode];
 
       setSelectedCurrencies(newSelectedCurrencies);
@@ -101,6 +102,7 @@ const App = () => {
 
       setRates(newRates);
       setValues(conversions);
+      setIsLoading(false);
       setIsModalOpen(false);
     } catch (error) {
       setError("Failed to add new currency. Please try again.");
@@ -207,6 +209,7 @@ const App = () => {
           onClose={() => setIsModalOpen(false)}
           currencies={supportedCountries}
           onSelect={handleCurrencySelect}
+          isLoading={isLoading}
         />
       )}
     </>

@@ -2,6 +2,7 @@ import { SupportedCurrency } from "../../utils/fetchCurrencies";
 import "./CurrencyModal.css";
 type CurrencyModalProps = {
   isOpen: boolean;
+  isLoading: boolean;
   onClose: () => void;
   currencies: SupportedCurrency[];
   onSelect: (currency: string) => void;
@@ -12,6 +13,7 @@ const CurrencyModal = ({
   onClose,
   currencies,
   onSelect,
+  isLoading,
 }: CurrencyModalProps) => {
   if (!isOpen) return null;
 
@@ -26,18 +28,22 @@ const CurrencyModal = ({
               x
             </button>
           </div>
-          <div className="modal_body">
-            {currencies.map((currency) => (
-              <div
-                key={currency.code}
-                className="currency_option"
-                onClick={() => onSelect(currency.code)}
-              >
-                <span>{currency.code}</span>
-                <span>{currency.name}</span>
-              </div>
-            ))}
-          </div>
+          {isLoading ? (
+            <span className="loader"></span>
+          ) : (
+            <div className="modal_body">
+              {currencies.map((currency) => (
+                <div
+                  key={currency.code}
+                  className="currency_option"
+                  onClick={() => onSelect(currency.code)}
+                >
+                  <span>{currency.code}</span>
+                  <span>{currency.name}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
