@@ -12,7 +12,7 @@ export type SupportedCurrency = {
 export const fetchRates = async (currencies?: string[]): Promise<Rates> => {
   try {
     const url = currencies
-      ? `https://softtecointerviewbe-production.up.railway.app:3001/api/currency/rates?currencies=${currencies.join(
+      ? `https://softtecointerviewbe-production.up.railway.app/api/currency/rates?currencies=${currencies.join(
           ","
         )}`
       : `https://softtecointerviewbe-production.up.railway.app/api/currency/rates`;
