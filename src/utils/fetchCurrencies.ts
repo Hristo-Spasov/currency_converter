@@ -19,6 +19,7 @@ export const fetchRates = async (currencies?: string[]): Promise<Rates> => {
 
     return await fetchData<Rates>({ url });
   } catch (error) {
+    console.error("Error fetching currency rates:", error);
     throw new Error("Failed to fetch currency rates");
   }
 };
@@ -32,6 +33,7 @@ export const fetchSupportedCountries = async (): Promise<
     });
     return data;
   } catch (error) {
+    console.error("Error fetching supported currencies:", error);
     throw new Error("Failed to fetch supported currencies");
   }
 };
@@ -56,6 +58,7 @@ export const fetchConversions = async (
       options,
     });
   } catch (error) {
+    console.error("Error converting currencies:", error);
     throw new Error("Failed to convert currencies");
   }
 };

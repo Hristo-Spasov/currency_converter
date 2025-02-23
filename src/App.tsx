@@ -79,6 +79,7 @@ const App = () => {
       );
       setValues(conversions);
     } catch (error) {
+      console.error("Error fetching conversions:", error);
       setError("An error occurred while fetching data.");
     }
   };
@@ -105,6 +106,7 @@ const App = () => {
       setIsLoading(false);
       setIsModalOpen(false);
     } catch (error) {
+      console.error("Error adding new currency:", error);
       setError("Failed to add new currency. Please try again.");
       setSelectedCurrencies((prev) =>
         prev.filter((currency) => currency !== currencyCode)
