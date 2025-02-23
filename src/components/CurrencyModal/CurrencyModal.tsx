@@ -29,20 +29,25 @@ const CurrencyModal = ({
             </button>
           </div>
           <div className="modal_body">
-            {isLoading ? (
-              <span className="loader"></span>
-            ) : (
-              currencies.map((currency) => (
-                <div
-                  key={currency.code}
-                  className="currency_option"
-                  onClick={() => onSelect(currency.code)}
-                >
-                  <span>{currency.code}</span>
-                  <span>{currency.name}</span>
-                </div>
-              ))
-            )}
+            {isLoading
+              ? Array(5)
+                  .fill(null)
+                  .map((_, index) => (
+                    <div key={index} className="currency_option skeleton">
+                      <div className="skeleton-text"></div>
+                      <div className="skeleton-text"></div>
+                    </div>
+                  ))
+              : currencies.map((currency) => (
+                  <div
+                    key={currency.code}
+                    className="currency_option"
+                    onClick={() => onSelect(currency.code)}
+                  >
+                    <span>{currency.code}</span>
+                    <span>{currency.name}</span>
+                  </div>
+                ))}
           </div>
         </div>
       </div>
